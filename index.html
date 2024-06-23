@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+        <main >
+            <h1>Tic Tac Toe</h1>
+            <h4 id="winner"></h4>
+            <div class="conatiner">
+                <div class="game">
+                    <button class="btn"></button>
+                    <button class="btn"></button>
+                    <button class="btn"></button>
+                    <button class="btn"></button>
+                    <button class="btn"></button>
+                    <button class="btn"></button>
+                    <button class="btn"></button>
+                    <button class="btn"></button>
+                    <button class="btn"></button>
+                </div>
+                <div class="score">
+                    <h3 id="players"></h3>
+                    <h5 id="player1"></h5>
+                    <h5 id="player2"></h5>
+                </div>
+            </div>
+            <div>
+                <button class="reset">Reset</button>
+            </div>
+        </main>
+
+        <script>
+            // let p1=prompt("Enter player1 name:");
+            // let p2=prompt("Enter player2 name:");
+            let btn=document.querySelectorAll('.btn');
+            let rst=document.querySelector('.reset');
+            let player1=document.getElementById("player1");
+            let player2=document.getElementById("player2");
+            let val1=0;
+            let val2=0;
+            let turn=true;
+            let win=[[0,1,2],[3,4,5],[6,7,8],[0,4,8],[2,4,6],[0,3,6],[1,4,7],[2,5,8]];
+            let winner = document.getElementById("winner");
+            let players=document.getElementById("players");
+            // players.innerText=`${p1} (X) -- ${p2} {O}`;
+            btn.forEach(element => {
+                element.addEventListener("click",()=>{
+                    if(turn){
+                    element.innerText="X";
+                    turn=false;
+                }
+                else{
+                    element.innerText="O";
+                    turn=true;
+                }
+                element.disabled=true;
+                checkwinner();
+                })
+            });
+
+            let disableButtons=()=>{
+                btn.forEach(element=>{
+                    element.disabled=true;
+                })
+            }
+
+
+            let checkwinner=()=>{
+                for(let pattern of win){
+                    let position1=btn[pattern[0]].innerText;
+                    let position2=btn[pattern[1]].innerText;
+                    let position3=btn[pattern[2]].innerText;
+                    if(position1!="" && position2!="" && position3!="" ){
+                        if(position1===position2 && position2===position3){
+                            console.log("Winner is ",position1);
+                            winner.innerText=`winner is player ${position1}`;
+                            if(position1==='X'){
+                                
+                                val1++;
+                                console.log("X value is ",val1);
+                            }
+                            else{
+                                val2++;
+                                console.log("O value is ",val2);
+                            }
+                            player1.innerText=`Score is ${val1}`;
+                            player2.innerText=`Score is ${val2}`;
+                            disableButtons();
+                        }
+                    }
+                }
+            }
+
+            rst.addEventListener("click",()=>{
+                turn=true;
+                btn.forEach(element=>{
+                    element.disabled=false;
+                    element.innerText="";
+                })
+            });
+
+            
+        </script>
+
+</body>
+</html>

@@ -1,0 +1,52 @@
+
+body {
+    background-color: bisque;
+    text-align: center;
+}
+.container {
+    align-items: center;
+    height:60vh;
+    width:30vh;
+    display:flexbox;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.game {
+    width:60vi;
+    display:flex;
+    flex-wrap: wrap;
+    align-items: start;
+    justify-content: start;
+    gap:0.5vi;
+    margin-top: 5vh;
+}
+
+.score {
+    display:flex;
+    flex-wrap: wrap;
+    align-items:flex-start;
+    justify-content:flex-start;
+}
+
+.btn {
+    height:15vi;
+    width:15vi;
+    border:none;
+    border-radius: 1rem;
+    background-color:cadetblue;
+    font-size: 4vi;
+    color: black;
+}
+
+.reset{
+    color:whitesmoke;
+    padding: 3vmin;
+    border-radius: 2vmin;
+    border:none;
+    background-color:black;
+    margin-top: 3vi;
+    
+}
